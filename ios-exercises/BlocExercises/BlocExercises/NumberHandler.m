@@ -17,6 +17,8 @@
     number = [NSNumber numberWithInt:b];
     return number;
 
+    // return [NSNumber numberWith Int: [number intValue] * 2];
+    
 }
 - (NSArray *) arrayOfNumbersBetweenNumber:(NSInteger)number andOtherNumber: (NSInteger)otherNumber {
 
@@ -30,8 +32,7 @@
     }
     
     for (NSInteger i = number; i <= otherNumber; i++) {
-        NSNumber *numberObject = [[NSNumber alloc] init];
-        numberObject = [NSNumber numberWithInteger: i];
+        NSNumber *numberObject = [NSNumber numberWithInteger: i];
         [numbersArray addObject: numberObject];
     
         
