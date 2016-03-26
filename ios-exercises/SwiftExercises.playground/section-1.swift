@@ -8,26 +8,34 @@ Strings
 
 func favoriteCheeseStringWithCheese(cheese: String) -> String {
     // WORK HERE
-    return cheese
+    return "My favorite cheese is \(cheese)"
 }
+
+favoriteCheeseStringWithCheese("mozarella")
 
 let fullSentence = favoriteCheeseStringWithCheese("cheddar")
 // Make fullSentence say "My favorite cheese is cheddar."
 
+let fullSentence2 = favoriteCheeseStringWithCheese("mozarella")
+fullSentence
 /*
 
 Arrays & Dictionaries
 
 */
 
-let numberArray = [1, 2, 3, 4]
+var numberArray = [1, 2, 3, 4]
 // Add 5 to this array
 // WORK HERE
+numberArray.append(5)
+numberArray
 
-let numberDictionary = [1 : "one", 2 : "two", 3 : "three", 4 : "four"]
+
+var numberDictionary = [1 : "one", 2 : "two", 3 : "three", 4 : "four"]
 // Add 5 : "five" to this dictionary
 // WORK HERE
-
+numberDictionary.updateValue("five", forKey: 5)
+numberDictionary
 /*
 
 Loops
@@ -37,8 +45,16 @@ Loops
 // Use a closed range loop to print 1 - 10, inclusively
 // WORK HERE
 
+for number in 1...10 {
+    print(number)
+}
+
 // Use a half-closed range loop to print 1 - 10, inclusively
 // WORK HERE
+
+for number in 1..<10 {
+    print(number)
+}
 
 let worf = [
     "name": "Worf",
@@ -58,12 +74,18 @@ let characters = [worf, picard]
 func favoriteDrinksArrayForCharacters(characters:[[String : String]]) -> [String] {
     // return an array of favorite drinks, like ["prune juice", "tea, Earl Grey, hot"]
     // WORK HERE
-    return []
+    
+    var drinksArray : [String] = []
+    
+    for characterDictionary in characters {
+        let favoriteDrink: String = characterDictionary["favorite drink"]!
+        drinksArray.append(favoriteDrink)
+        
+    }
+    
+    return drinksArray
 }
 
-let favoriteDrinks = favoriteDrinksArrayForCharacters(characters)
-
-favoriteDrinks
 
 /*
 
@@ -75,7 +97,11 @@ func emailFromUserDict(userDict : [String : String]) -> String {
     // Return the user's email address from userDict, or return "" if they don't have one
     
     // WORK HERE
-    return "user@example.com"
+    if let emailAddress = userDict["email"] {
+        return emailAddress
+    } else {
+        return ""
+    }
 }
 
 
@@ -97,12 +123,19 @@ Functions
 
 // Make a function that inputs an array of strings and outputs the strings separated by a semicolon
 
-let strings = ["milk", "eggs", "bread", "challah"]
+let strings: [String] = ["milk", "eggs", "bread", "challah"]
 
 // WORK HERE - make your function and pass `strings` in
 
-let expectedOutput = "milk;eggs;bread;challah"
+func arrayToString(strings: [String])-> String{
+    
+    let newString = strings.joinWithSeparator(";")
+    
+    return newString
+}
 
+let expectedOutput = "milk;eggs;bread;challah"
+arrayToString(strings)
 /*
 
 Closures
@@ -110,6 +143,7 @@ Closures
 */
 
 let cerealArray = ["Golden Grahams", "Cheerios", "Trix", "Cap'n Crunch OOPS! All Berries", "Cookie Crisp"]
-
+let sortedCereal = cerealArray.sort {$0 < $1}
+sortedCereal
 // Use a closure to sort this array alphabetically
 // WORK HERE
